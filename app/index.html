@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CF AI – Edge Chat (Llama 3.3 + Durable Memory)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>CF AI – Edge Chat</h1>
+      <div class="right">
+        <select id="model">
+          <option value="@cf/meta/llama-3.3-70b-instruct-fp8-fast">Llama 3.3 70B (fast, fp8)</option>
+          <option value="@cf/meta/llama-3.1-8b-instruct">Llama 3.1 8B</option>
+        </select>
+        <input id="roomId" value="demo" />
+        <button id="clearBtn" title="Clear memory for this room">Clear</button>
+      </div>
+    </header>
+
+    <main id="chat"></main>
+
+    <form id="chatForm">
+      <input id="text" placeholder="Ask me anything…" autocomplete="off" />
+      <button>Send</button>
+    </form>
+
+    <section class="voice">
+      <h3>Voice (push-to-talk)</h3>
+      <div class="voice-row">
+        <input type="file" id="audioFile" accept="audio/*" capture="microphone" />
+        <button id="sendAudio">Send audio</button>
+      </div>
+      <audio id="player" controls></audio>
+    </section>
+
+    <footer>
+      <span>Backend API: <code id="apiBase"></code></span>
+    </footer>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
